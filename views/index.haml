@@ -1,0 +1,14 @@
+.row.centered
+    %h1.centered.ten.columns ¿Dónde está Fer ahora mismo?
+    #main-title
+        - first = @checkins.shift
+        %h2= first.title
+        %p= distance_of_time_in_words(first.pubDate)
+.row
+    .centered.six.columns
+        %hr
+        %h5 Fer estuvo anteriormente en:
+        - @checkins.each do  |entry|    
+            %h6= entry.title
+            %p= distance_of_time_in_words(entry.pubDate)
+            -venue_name = URI::encode(entry.title)       
